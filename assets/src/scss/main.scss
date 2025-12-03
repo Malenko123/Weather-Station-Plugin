@@ -1,0 +1,106 @@
+// Import variables
+@import 'abstracts/variables';
+
+// Import components
+@import 'components/map';
+@import 'components/sidebar';
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+#weather-station-app,
+.weather-station-sidebar,
+.sidebar-content {
+  overflow-anchor: none;
+}
+
+.hero-logo-container {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.ws-hero-section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: linear-gradient(to bottom, $primary-color-ws 100%, rgba(115, 115, 115, 0) 100%);
+    z-index: 1;
+    margin-bottom: -1vh;
+
+    .ws-hero-content {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 40px;
+        line-height: 40px;
+        font-family: $font-main;
+        color: $text-color;
+    }
+
+    span {
+        margin-top: auto;
+        margin-bottom: 6.875rem;
+        text-align: center;
+        color: $text-color;
+        font-size: $font-size-s;
+        font-family: $font-main;
+    }
+}
+
+.ws-btn {
+    font-family: $font-main;
+    color: $secondary-color-ws;
+    cursor: pointer;
+    font-size: 12px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: 0;
+        left: 50%;
+        background-color: $secondary-color-ws;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    &:hover {
+        color: $secondary-color-ws;
+        
+        &::after {
+            width: 100%;
+            background-color: $secondary-color-ws;
+        }
+    }
+    
+     &.ws-btn-active {
+        color: $text-color;
+        
+        &::after {
+            width: 100%;
+            background-color: $text-color;
+        }
+    }
+}
+

@@ -1,0 +1,79 @@
+#weather-station-app {
+    display: flex;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+
+    #weather-station-map {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      z-index: 1;
+      flex-grow: 1;
+      overflow-anchor: none;
+      
+      .leaflet-container {
+        height: 100%;
+        width: 100%;
+      }
+      
+      .weather-station-marker {
+        position: relative;
+        z-index: 1000;
+        
+        .marker-inner {
+            background: #4CAF50 !important; // Green color
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: block;
+        }
+      }
+      
+      // Make sure markers are above map tiles.
+      .leaflet-marker-icon {
+        z-index: 1000 !important;
+      }
+
+      @media (max-width: 768px) { 
+        z-index: 2;
+      }
+    }
+
+    .gradient-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; 
+        background: linear-gradient(to bottom, #28282C 100%, rgba(115, 115, 115, 0) 200%);
+        
+        pointer-events: none;
+        z-index: 2;
+    }
+}
+
+.weather-loading {
+  
+  flex-direction: column;
+  padding: 40px 20px;
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid $primary-color-ws;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

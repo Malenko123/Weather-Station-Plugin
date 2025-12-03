@@ -1,0 +1,319 @@
+.ws-weather-header {
+
+  &-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 55px;
+  }
+}
+
+.ws-temperature-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+// Bookmark styles.
+.ws-bookmark-locations {
+    
+    .ws-btn {
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        svg {
+            
+            path {
+                transition: fill 0.2s ease;
+            }
+        }
+        
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+            
+            svg path {
+                fill: #FFFFFF;
+            }
+        }
+    }
+}
+
+.sidebar-description.permanently-hidden {
+    display: none !important;
+}
+
+// Side panel styles
+.weather-station-sidebar {
+    width: 0;
+    flex-shrink: 0;
+    background: $sidebar-bg;
+    color: $sidebar-text;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 1000;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    .sidebar-header {
+        padding: 30px;
+        background: $sidebar-bg;    
+
+        h2 {
+            margin: 0;
+            color: $white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    }
+    
+    /* If sidebar-content is flex, make it column layout */
+    .sidebar-content {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        width: $sidebar-width;
+        height: 100%;
+      
+        .sidebar-description {
+            font-family: $font-main;
+            color: $text-color;
+            font-weight: 600;
+            font-size: $font-size-s;
+        }
+        
+       .ws-weather-card {
+
+            .js-ws-bookmark-btn {
+                font-family: $font-main;
+                cursor: pointer;
+                font-size: 12px;
+                background: transparent;
+                border: 0;
+                padding: 0;
+                border-radius: 0;
+            }
+
+            .ws-location-name {
+                font-family: $font-main;
+                font-size: 12px;
+                line-height: 15px;
+                color: $text-color;
+            }
+
+            .ws-weather-details {
+                margin-top: 28px;
+
+                .ws-detail {
+
+                    margin-bottom: 10px;
+                    line-height: 0;
+
+                    span {
+                        font-family: $font-main;
+                        line-height: 15px;
+                        color: $text-color;
+                        font-size: $font-size-s;
+                    }
+
+                    .ws-label {
+                        font-weight: 700;
+                    }
+
+                    .ws-value {
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 768px) { 
+            width: 100%;
+        }
+    }
+
+    .admin-bar .sidebar-content {
+        padding-top: 55px;
+    }
+}
+
+// Map container styles
+.weather-station-map-container {
+    flex: 1;
+    position: relative;
+    
+    #weather-station-map {
+        height: 100vh;
+        width: 100%;
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .weather-station-app {
+        flex-direction: column;
+    }
+    
+    .weather-station-sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 40vh;
+    }
+    
+    .weather-station-map-container {
+        height: 60vh;
+        
+        #weather-station-map {
+            height: 60vh;
+        }
+    }
+}
+
+// Loading animation
+.weather-loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: rgba(255, 255, 255, 0.5);
+    
+    .loading-spinner {
+        width: 30px;
+        height: 30px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top: 2px solid #FFFFFF;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 15px;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.temperature-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    .unit-separator {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 12px;
+    }
+}
+
+/* My Locations Wrapper */
+.ws-my-locations-wrapper {
+    position: sticky;
+    bottom: 0;
+    background: $sidebar-bg;
+    z-index: 10;
+    margin-top: auto;
+    display: flex;
+    justify-content: end;
+
+    .ws-my-locations-btn {
+        display: flex;
+        align-items: end;
+        justify-content: end;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+        position: relative;
+
+        .ws-my-locations-text {
+            color: $text-color;
+            font-size: 12px;
+            font-family: $font-main;
+        }
+    }
+}
+
+/* Map overlay when sidebar is opened */
+.ws-map-overlay {
+    background: $primary-color-ws;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.02);
+    transition: opacity 0.4s ease-out, visibility 0.4s ease-out, transform 0.5s ease-out;
+    
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* For bookmarks view, adjust positioning */
+.ws-bookmarks-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 70px; /* Account for button height + padding */
+    background: $sidebar-bg;
+    overflow-y: auto;
+    z-index: 900;
+    padding: 20px;
+
+    .ws-weather-card {
+        position: relative;
+        margin-bottom: 20px;
+
+        .ws-location-name {
+            font-family: $font-main;
+            font-size: 12px;
+            line-height: 15px;
+            color: $text-color;
+            font-weight: 400;
+            cursor: pointer;
+
+            &:hover {
+                color: $secondary-color-ws;
+            }
+        }
+
+        .ws-bookmark-remove {
+            background: none;
+            border: 0;
+            color: #fff;
+            opacity: .6;
+            font-size: 12px;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0;
+        }
+
+        &.active {
+
+            .ws-location-name {
+                font-weight: 800;
+            }
+        }
+
+        &.inactive {
+
+            .ws-location-name {
+                color: $secondary-color-ws;
+            }
+        }
+    }
+
+    @media (max-width: 768px) { 
+        bottom: 50px;
+    }
+}
