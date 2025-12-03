@@ -1,0 +1,17 @@
+.weather-station-map-block-editor {
+    margin: 20px 0;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.weather-station-map-block-editor h3 {
+    color: #2c5aa0;
+    margin: 0 0 10px 0;
+}
+
+.weather-station-map-block-editor p {
+    color: #666;
+    margin: 0;
+    font-style: italic;
+}

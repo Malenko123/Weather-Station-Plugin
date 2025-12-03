@@ -1,0 +1,9 @@
+{
+    "apiVersion": 2,
+    "name": "weather-station/weather-map",
+    "title": "Weather Station Map",
+    "category": "widgets",
+    "description": "Display an interactive map with weather stations",
+    "keywords": ["weather", "map", "station"],
+    "textdomain": "weather-station"
+}
