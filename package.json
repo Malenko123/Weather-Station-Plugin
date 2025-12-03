@@ -1,0 +1,25 @@
+{
+  "name": "weather-station-plugin",
+  "version": "1.0.0",
+  "description": "WordPress plugin for weather stations with interactive map",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && cp -r assets/src/images/ assets/dist/images/",
+    "preview": "vite preview",
+    "lint:js": "eslint assets/src/js --ext .js",
+    "lint:css": "stylelint assets/src/scss/**/*.scss"
+  },
+  "devDependencies": {
+    "vite": "^4.3.9",
+    "sass": "^1.63.6",
+    "eslint": "^8.43.0",
+    "stylelint": "^15.6.2",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "@wordpress/eslint-plugin": "^15.0.0",
+    "@wordpress/scripts": "^26.0.0"
+  },
+  "dependencies": {
+    "gsap": "^3.11.4"
+  }
+}
